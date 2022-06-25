@@ -6,7 +6,7 @@ import QuoteDetails from "./components/pages/QuoteDetails";
 function App() {
   return (
     <div>
-      <Route path="/">
+      <Route path="/" exact>
         <Redirect to="/quotes" />
       </Route>
       <Route path="/quotes" exact>
