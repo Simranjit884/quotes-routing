@@ -12,6 +12,10 @@ const QuoteDetails = () => {
 
   const quote = DUMMY_DATA.find((quote) => quote.id === params.quotesId);
 
+  if(!quote) {
+    return <p>No quote found!</p>
+  }
+
   return (
     <div>
       <HighlightedQuote author={quote.author} text={quote.text} />
