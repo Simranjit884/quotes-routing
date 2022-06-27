@@ -8,16 +8,16 @@ const QuoteList = (props) => {
   const location = useLocation();
   console.log("location is--", location);
   const queryParams = new URLSearchParams(location.search);
-  const isAscending = queryParams.get("sort") === "asc";
+  const isSortingAscending = queryParams.get("sort") === "asc";
   const changeSortingHandler = () => {
-    history.push("quotes/sort=asc");
+    history.push('/quotes?sort='+ (isSortingAscending ? 'desc' : 'asc'));
   };
 
   return (
     <Fragment>
       <div className={classes.sorting}>
         <button onClick={changeSortingHandler}>
-          Sort {isAscending ? "Descending" : "Ascending"}
+          Sort {isSortingAscending ? "Descending" : "Ascending"}
         </button>
       </div>
       <ul className={classes.list}>
