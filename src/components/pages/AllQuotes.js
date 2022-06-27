@@ -3,7 +3,7 @@ import useHttp from "../../hooks/use-http";
 import { getAllQuotes } from "../../lib/api";
 import QuoteList from "../quotes/QuoteList";
 import LoadingSpinner from "../UI/LoadingSpinner";
-import NotFound from "./NotFound";
+import NoQuotesFound from '../quotes/NoQuotesFound';
 
 const AllQuote = () => {
   const {
@@ -30,7 +30,7 @@ const AllQuote = () => {
   }
 
   if (status === "completed" && (!loadedQuotes || loadedQuotes.length === 0)) {
-    return <NotFound />;
+    return <NoQuotesFound />;
   }
 
   return <QuoteList quotes={loadedQuotes} />;
