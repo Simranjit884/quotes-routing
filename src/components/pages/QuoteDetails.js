@@ -9,7 +9,7 @@ import LoadingSpinner from "../UI/LoadingSpinner";
 const QuoteDetails = () => {
   const params = useParams();
   const match = useRouteMatch();
-
+  console.log(params);
   const {
     sendRequest,
     status,
@@ -20,7 +20,7 @@ const QuoteDetails = () => {
   const { quoteId } = params;
 
   useEffect(() => {
-    sendRequest();
+    sendRequest(quoteId);
   }, [sendRequest, quoteId]);
 
   if (status === "pending") {
