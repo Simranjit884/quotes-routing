@@ -5,11 +5,6 @@ import QuoteList from "../quotes/QuoteList";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import NotFound from "./NotFound";
 
-const DUMMY_DATA = [
-  { id: "q1", author: "Rubal", text: "Learning React is fun!" },
-  { id: "q2", author: "Simranjit", text: "Learning React is Great!" },
-];
-
 const AllQuote = () => {
   const {
     sendRequest,
