@@ -1,4 +1,4 @@
-import { useParams, Route } from "react-router-dom";
+import { useParams, Route, Link } from "react-router-dom";
 import Comments from "../comments/Comments";
 import HighlightedQuote from "../quotes/HighlightedQuote";
 
@@ -12,13 +12,18 @@ const QuoteDetails = () => {
 
   const quote = DUMMY_DATA.find((quote) => quote.id === params.quotesId);
 
-  if(!quote) {
-    return <p>No quote found!</p>
+  if (!quote) {
+    return <p>No quote found!</p>;
   }
 
   return (
     <div>
       <HighlightedQuote author={quote.author} text={quote.text} />
+      <div className="centered">
+        <Link className="btn--flat" to={`/quotes/${params.quotesId}/comments`}>
+          Load comments
+        </Link>
+      </div>
       <Route path={`/quotes/${params.quotesId}/comments`}>
         <Comments />
       </Route>
