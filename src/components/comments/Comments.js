@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import classes from "./Comments.module.css";
 import NewCommentForm from "./NewCommentForm";
@@ -21,7 +21,9 @@ const Comments = () => {
     setIsAddingComment(true);
   };
 
-  const addedCommnetHandler = () => {};
+  const addedCommnetHandler = useCallback(() => {
+    sendRequest(quoteId);
+  }, [sendRequest, quoteId]);
 
   let comments;
 
@@ -33,7 +35,7 @@ const Comments = () => {
     );
   }
 
-  if (status === "pending" && loadedComments && loadedComments.length > 0) {
+  if (status === "pending" && (loadedComments && loadedComments.length > 0)) {
     comments = <commentsList comments={loadedComments} />;
   }
 
