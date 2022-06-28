@@ -58,7 +58,7 @@ const Comments = () => {
           onAddedComment={addedCommnetHandler}
         />
       )}
-      <p>Comments...</p>
+      <p>{comments}</p>
     </section>
   );
 };
