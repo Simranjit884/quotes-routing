@@ -2,12 +2,12 @@ import React, { Suspense } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import AllQuotes from "./components/pages/AllQuotes";
 import Layout from "./components/layout/Layout";
-import NotFound from "./components/pages/NotFound";
 import LoadingSpinner from "./components/UI/LoadingSpinner";
 
 function App() {
   const NewQuote = React.lazy(() => import("./components/pages/NewQuote"));
   const QuoteDetails = React.lazy(() => import("./components/pages/QuoteDetails"));
+  const NotFound = React.lazy(()=> import('./components/pages/NotFound'));
   return (
     <Layout>
       <Suspense
