@@ -11,7 +11,7 @@ const Comments = () => {
   const params = useParams();
   const { quoteId } = params;
 
-  const { sendRequest, status, data: loadedQuote } = useHttp(getAllComments);
+  const { sendRequest, status, data: loadedComments } = useHttp(getAllComments);
 
   useEffect(() => {
     sendRequest(quoteId);
@@ -31,6 +31,17 @@ const Comments = () => {
         <LoadingSpinner />
       </div>
     );
+  }
+
+  if (status === "pending" && loadedComments && loadedComments.length > 0) {
+    comments = <commentsList comments={loadedComments} />;
+  }
+
+  if (
+    status === "completed" &&
+    (!loadedComments || loadedComments.length === 0)
+  ) {
+    comments = <div className="centered">No comments were added yet!</div>;
   }
 
   return (
