@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import useHttp from "../../hooks/use-http";
 import { addComment } from "../../lib/api";
 import classes from "./NewCommentForm.module.css";
@@ -7,7 +7,13 @@ import LoadingSpinner from "../UI/LoadingSpinner";
 const NewCommentForm = (props) => {
   const commentTextRef = useRef();
 
-  const { sendRequest, status } = useHttp(addComment);
+  const { sendRequest, status, error } = useHttp(addComment);
+
+  const { onAddedComment } = props;
+
+  useEffect(() => {
+    onAddedComment();
+  }, [status, onAddedComment, error]);
 
   const submitFormHandler = (event) => {
     event.preventDefault();
