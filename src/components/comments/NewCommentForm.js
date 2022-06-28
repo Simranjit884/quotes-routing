@@ -9,10 +9,12 @@ const NewCommentForm = (props) => {
 
   const { sendRequest, status, error } = useHttp(addComment);
 
-  const { onAddedComment } = props;
+  const { onAddedComment, quoteId } = props;
 
   useEffect(() => {
-    onAddedComment();
+    if (status === "completed" && !error) {
+      onAddedComment();
+    }
   }, [status, onAddedComment, error]);
 
   const submitFormHandler = (event) => {
@@ -20,7 +22,7 @@ const NewCommentForm = (props) => {
     const enteredText = commentTextRef.current.value;
 
     // optional: Could validate here
-    sendRequest({ text: enteredText });
+    sendRequest({ text: enteredText }, quoteId);
     // send comment to server
   };
 
